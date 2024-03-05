@@ -1,48 +1,80 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Landing Page</title>
-		<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="style.css">
-	</head>
-	<body>
-		<div class="open">
-			<div class="layer"></div>
-			<div class="layer"></div>
-		</div>
-		<section>
-			<div class="header">
-		    	<h2 class="logo">Logo</h2>
-				<ul>
-					<li><a href="#" class="active">Home</a></li>
-				    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Our Work</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Contact</a></li>
-				</ul>
-			</div>
-			<div class="bannerText">
-				<h2>HTML TEMPLATE</h2><br>
-				<h3>ANd CSS Design</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<a href="#">Read More</a>
-			</div>
-			<img src="girl.jpg" class="girl">
-			<ul class="sci">
-				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-				<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-				<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-			</ul>
-			<div class="element1"></div>
-			<div class="element2"></div>
-		</section>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f4;
+    }
+    .container {
+      text-align: center;
+    }
+    input[type="text"], select, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #result {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <input type="text" id="temperature" placeholder="Enter temperature">
+    <select id="unit">
+      <option value="celsius">Celsius</option>
+      <option value="fahrenheit">Fahrenheit</option>
+      <option value="kelvin">Kelvin</option>
+    </select>
+    <button onclick="convertTemperature()">Convert</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function convertTemperature() {
+      var temperature = parseFloat(document.getElementById("temperature").value);
+      var unit = document.getElementById("unit").value;
+      var resultElement = document.getElementById("result");
+      var convertedTemperature;
+      
+      if (isNaN(temperature)) {
+        resultElement.innerText = "Please enter a valid number for temperature!";
+        return;
+      }
+
+      if (unit === "celsius") {
+        convertedTemperature = temperature * 9/5 + 32;
+        resultElement.innerText = "Converted Temperature: " + convertedTemperature.toFixed(2) + " °F";
+      } else if (unit === "fahrenheit") {
+        convertedTemperature = (temperature - 32) * 5/9;
+        resultElement.innerText = "Converted Temperature: " + convertedTemperature.toFixed(2) + " °C";
+      } else if (unit === "kelvin") {
+        convertedTemperature = temperature - 273.15;
+        resultElement.innerText = "Converted Temperature: " + convertedTemperature.toFixed(2) + " °C";
+      }
+    }
+  </script>
+</body>
 </html>
